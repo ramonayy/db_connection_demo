@@ -1,0 +1,12 @@
+[project]
+name = "db-connection-demo"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "dotenv>=0.9.9",
+    "ipykernel>=7.3.0",
+    "mysql-connector-python>=26.10.0",
+    "sqlalchemy>=2.0.55",
+]
