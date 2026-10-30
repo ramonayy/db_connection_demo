@@ -41,4 +41,4 @@ class Gläubiger(Base):
         name="TelefonNr"
         )
     
-    schuld: Mapped["Schuld"] = relationship("Schuld", back_populates="gläubiger", cascade="all, delete-orphan")
+    schuld: Mapped[list["Schuld"]] = relationship("Schuld", back_populates="gläubiger", cascade="all, delete-orphan")
