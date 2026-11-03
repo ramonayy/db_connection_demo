@@ -5,10 +5,10 @@ from sqlalchemy import Integer, String, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from model.Base import Base
 
-
 if TYPE_CHECKING:
     from orm_sqlalchemy.model.Klient import Klient
     from orm_sqlalchemy.model.Glaeubiger import Glaeubiger
+    from orm_sqlalchemy.model.Vertrag import Vertrag
 
 
 class Schuld(Base):
@@ -35,3 +35,4 @@ class Schuld(Base):
 
     glaeubiger: Mapped["Glaeubiger"] = relationship("Glaeubiger", back_populates="schuld", lazy="select")
     klient: Mapped["Klient"] = relationship("Klient", back_populates="schuld", lazy="select")
+    vertrag: Mapped["Vertrag"] = relationship("Vertrag", back_populates="schuld", lazy="select")
