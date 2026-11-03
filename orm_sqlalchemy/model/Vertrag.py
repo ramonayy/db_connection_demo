@@ -12,28 +12,23 @@ if TYPE_CHECKING:
 
 
 class Vertrag(Base):
-    __tablename__ = "Vertrag"
+    __tablename__ = "vertrag"
 
     vertragsNr: Mapped[int] = mapped_column(
-        Integer, 
-        name="VertragsNr",
+        Integer,
         primary_key=True
         )
     schuldNr: Mapped[int] = mapped_column(
         Integer,
-         ForeignKey(Schuld.schuldNr),
-        name="SchuldNr"
+         ForeignKey("schuld.schuldNr")
         )
     monatsrate: Mapped[int] = mapped_column(
-        Integer,
-        name="Monatsrate"
+        Integer
         )
     zahlungsart: Mapped[str] = mapped_column(
-        String,
-        name="Zahlungsart"
+        String(50)
         )
     abzahlungInJahren: Mapped[int] = mapped_column(
-        Integer,
-        name="AbzahlungInJahren"
+        Integer
         )
     schuld: Mapped["Schuld"] = relationship("Schuld", back_populates="vertrag", lazy="select")

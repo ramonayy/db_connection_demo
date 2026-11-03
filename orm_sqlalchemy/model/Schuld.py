@@ -5,37 +5,33 @@ from sqlalchemy import Integer, String, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from model.Base import Base
 
+
 if TYPE_CHECKING:
-    from model.Klient import Klient
-    from model.Gläubiger import Gläubiger
+    from orm_sqlalchemy.model.Klient import Klient
+    from orm_sqlalchemy.model.Glaeubiger import Glaeubiger
 
 
 class Schuld(Base):
-    __tablename__ = "Schuld"
+    __tablename__ = "schuld"
 
     schuldNr: Mapped[int] = mapped_column(
         Integer, 
-        name="SchuldNr",
         primary_key=True
         )
-    höhe: Mapped[int] = mapped_column(
+    hoehe: Mapped[int] = mapped_column(
         Integer,
-        name="Höhe"
         )
-    gläubigerNr: Mapped[int] = mapped_column(
+    glaeubigerNr: Mapped[int] = mapped_column(
         Integer,
-        ForeignKey("Gläubiger.GläubigerNr"),
-        name="GläubigerNr"
+        ForeignKey("glaeubiger.glaeubigerNr"),
         )
     klientenNr: Mapped[int] = mapped_column(
         Integer,
-        ForeignKey("Klient.KlientenNr"),
-        name="KlientenNr"
+        ForeignKey("klient.klientenNr"),
         )
     grund: Mapped[str] = mapped_column(
-        String,
-        name="Grund"
+        String(200)
         )
 
-    gläubiger: Mapped["Gläubiger"] = relationship("Gläubiger", back_populates="schuld", lazy="select")
+    glaeubiger: Mapped["Glaeubiger"] = relationship("Glaeubiger", back_populates="schuld", lazy="select")
     klient: Mapped["Klient"] = relationship("Klient", back_populates="schuld", lazy="select")

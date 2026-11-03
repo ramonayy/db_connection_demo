@@ -5,22 +5,18 @@ from model.Base import Base
 
 
 class User(Base):
-    __tablename__ = "User"
+    __tablename__ = "user"
 
     userId: Mapped[int] = mapped_column(
         Integer,
-        name="UserId",
         primary_key=True
         )
     username: Mapped[str] = mapped_column(
-        String,
-        name="UserName"
+        String(50)
         )
     email: Mapped[str] = mapped_column(
-        String,
-        name="Email"
+        String(50)
         )
     passwort: Mapped[str] = mapped_column(
-        String,
-        name="Passwort"
+        String(50)
         )

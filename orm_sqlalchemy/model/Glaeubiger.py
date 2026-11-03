@@ -9,36 +9,30 @@ if TYPE_CHECKING:
     from model.Schuld import Schuld
 
 
-class Gläubiger(Base):
-    __tablename__ = "Gläubiger"
+class Glaeubiger(Base):
+    __tablename__ = "glaeubiger"
 
-    gläubigerNr: Mapped[int] = mapped_column(
+    glaeubigerNr: Mapped[int] = mapped_column(
         Integer, 
-        name="GläubigerNr",
         primary_key=True
         )
     nname: Mapped[str] = mapped_column(
-        String,
-        name="Nname"
+        String(50),
         )
     vname: Mapped[str] = mapped_column(
-        String,
-        name="Vname"
+        String(50),
         )
     strasse: Mapped[str] = mapped_column(
-        String,
-        name="Strasse"
+        String(50),
         )
     plz: Mapped[int] = mapped_column(
         Integer,
-        name="PLZ")
+)
     ort: Mapped[str] = mapped_column(
-        String,
-        name="Ort"
+        String(50),
         )
     telefonNr: Mapped[int] = mapped_column(
         Integer,
-        name="TelefonNr"
         )
     
-    schuld: Mapped[list["Schuld"]] = relationship("Schuld", back_populates="gläubiger", cascade="all, delete-orphan")
+    schuld: Mapped[list["Schuld"]] = relationship("Schuld", back_populates="glaeubiger", cascade="all, delete-orphan")

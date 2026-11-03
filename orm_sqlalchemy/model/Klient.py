@@ -11,43 +11,35 @@ if TYPE_CHECKING:
 
 
 class Klient(Base):
-    __tablename__ = "Klient"
+    __tablename__ = "klient"
 
     klientenNr: Mapped[int] = mapped_column(
         Integer, 
-        name="KlientenNr",
         primary_key=True
         )
     nname: Mapped[str] = mapped_column(
-        String,
-        name="Nname"
+        String(50)
         )
     vname: Mapped[str] = mapped_column(
-        String,
-        name="Vname"
+        String(50)
         )
     strasse: Mapped[str] = mapped_column(
-        String,
-        name="Strasse"
+        String(50)
         )
     plz: Mapped[int] = mapped_column(
-        Integer,
-        name="PLZ")
+        Integer
+        )
     ort: Mapped[str] = mapped_column(
-        String,
-        name="Ort"
+        String(50)
         )
     telefonNr: Mapped[int] = mapped_column(
-        Integer,
-        name="TelefonNr"
+        Integer
         )
     beruf: Mapped[str] = mapped_column(
-        String,
-        name="Beruf"
+        String(50)
         )
     monatseinkommen: Mapped[int] = mapped_column(
-        Integer,
-        name="Monatseinkommen"
+        Integer
         )
 
     schuld: Mapped["Schuld"] = relationship("Schuld", back_populates="klient", cascade="all, delete-orphan")
