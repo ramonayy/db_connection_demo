@@ -31,4 +31,4 @@ class Vertrag(Base):
     abzahlungInJahren: Mapped[int] = mapped_column(
         Integer
         )
-    schuld: Mapped["Schuld"] = relationship("Schuld", back_populates="vertrag", lazy="select")
+    schuld: Mapped["Schuld"] = relationship("Schuld", back_populates="vertrag", lazy="joined")

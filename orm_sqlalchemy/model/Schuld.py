@@ -35,4 +35,4 @@ class Schuld(Base):
 
     glaeubiger: Mapped["Glaeubiger"] = relationship("Glaeubiger", back_populates="schuld", lazy="select")
     klient: Mapped["Klient"] = relationship("Klient", back_populates="schuld", lazy="select")
-    vertrag: Mapped["Vertrag"] = relationship("Vertrag", back_populates="schuld", lazy="select")
+    vertrag: Mapped["Vertrag"] = relationship("Vertrag", back_populates="schuld", lazy="joined")
