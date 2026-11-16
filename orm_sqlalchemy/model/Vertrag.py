@@ -5,7 +5,10 @@ from sqlalchemy import Integer, String, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from model.Base import Base
 
-
+# TYPE_CHECKING ist zur Laufzeit immer False.
+# Statische Type Checker behandeln TYPE_CHECKING hingegen als True.
+# Dadurch werden Imports, die nur für Typannotationen benötigt werden, bei der Laufzeit übersprungen.
+# So können zirkuläre Importe vermieden werden, ohne auf die statische Typprüfung verzichten zu müssen.
 if TYPE_CHECKING:
     from model.Schuld import Schuld
 
