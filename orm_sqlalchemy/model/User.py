@@ -11,7 +11,7 @@ class User(Base):
         Integer,
         primary_key=True
         )
-    username: Mapped[str] = mapped_column(
+    userName: Mapped[str] = mapped_column(
         String(50)
         )
     email: Mapped[str] = mapped_column(
@@ -20,3 +20,6 @@ class User(Base):
     passwort: Mapped[str] = mapped_column(
         String(50)
         )
+    rechte: Mapped[str] = mapped_column(
+        String(200)
+    )
